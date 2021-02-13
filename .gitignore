@@ -1,1 +1,6 @@
-**/.terraform*
+**/.terraform
+**/.terraform.lock.*
+**/*.svg
+**/*.out
+**/*.pem
+**/.travis.yml

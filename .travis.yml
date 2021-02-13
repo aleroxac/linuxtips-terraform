@@ -1,0 +1,52 @@
+dist: focal
+sudo: false
+
+services:
+  - docker
+
+branches:
+  only:
+    - master
+
+before_install:
+ - mv docker.makefile Makefile; ls -l
+
+jobs:
+  include:
+    - stage: Inicializando provider
+      script:
+        - make terraform-init
+
+    - stage: Inicializando formatando e validando scripts
+      script:
+        - make terraform-format
+#         - make terraform-validate
+
+    - stage: Criando e selecionando workspace
+      script:
+        - make terraform-create-workspace
+        - make terraform-select-workspace
+
+    - stage: Rodando o script
+      script:
+        - make terraform-plan
+        - make terraform-apply
+
+    - stage: Visualizando recursos criados
+      script:
+        - make terraform-list
+
+    - stage: Checando EC2 e serviço do Nginx
+      script:
+        - make check-server
+        - make check-nginx
+
+    - stage: Destruindo os recursos
+      script:
+        - make terraform-plan-destroy
+        - make terraform-destroy
+        - make terraform-list
+
+after_success:
+  - alias make="make -f docker.makefile"
+  - make clean
