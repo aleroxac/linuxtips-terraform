@@ -26,7 +26,7 @@ Projeto com scripts do Terraform criados a partir do conteúdo assimilado durant
 
 ## O que preciso fazer antes de rodar os scripts
 * Criar uma [conta na AWS](https://docs.aws.amazon.com/pt_br/polly/latest/dg/setting-up.html)
-* Criar um [usuário no IAM da AWS](https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_users_create.html#id_users_create_console) e baixe o csv com suas credenciais
+* Criar um [usuário no IAM da AWS](https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_users_create.html#id_users_create_console) e baixar o csv com suas credenciais
 * Criar um domínio(No meu caso, usei um domínio gratuito do [Freenom](https://www.freenom.com/))
 
 
@@ -40,7 +40,7 @@ wget -P /tmp https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_li
 unzip /tmp/terraform*.zip
 sudo mv /tmp/terraform /usr/local/bin
 
-## Instalando o python3, pip, awscli
+## Instalando o python3, pip3 e o awscli
 sudo apt install -y python3 python3-pip graphviz
 sudo pip install awscli
 
@@ -55,18 +55,18 @@ terraform init
 terraform plan -out plan.out
 terraform apply plan.out
 
-# É importante ler o README.md dentro dos módulos para saber como usá-los
+# É importante ler o README.md dentro dos módulos para ver os detalhes de como usá-los.
 ```
 
 
 ## Setup para rodar o Terraform via Docker
 ``` shell
-## Instalando o docker
+## Instalando o Docker
 curl -fsSL https://get.docker.com | sh
 sudo usermod -aG docker ${USERNAME}
 ## Depois disso, caso não queira ficar usando o sudo, faça logout da sua sessão de usuário e logue-se novamente.
 
-## Instalando o python3, pip, awscli
+## Instalando o python3, pip e o awscli
 sudo apt install -y python3 python3-pip graphviz
 sudo pip install awscli
 
@@ -89,7 +89,7 @@ terraform init
 terraform plan -out plan.out
 terraform apply plan.out
 
-# É importante ler o README.md dentro dos módulos para saber como usá-los
+# É importante ler o README.md dentro dos módulos para ver os detalhes de como usá-los.
 ```
 
 
