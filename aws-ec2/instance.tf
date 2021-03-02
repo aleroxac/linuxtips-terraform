@@ -10,9 +10,7 @@ resource "aws_instance" "ec2_instance" {
   subnet_id                   = random_shuffle.subnets.result[0]
   instance_type               = var.instance_type
   associate_public_ip_address = true
-
-  /* user_data = file("./resources/provisioner.sh") */
-  user_data = file("${path.module}/resources/provisioner.sh")
+  user_data                   = file("${path.module}/provisioners/setup-nginx.sh")
 
   tags = {
     Name        = local.ec2_hostname
