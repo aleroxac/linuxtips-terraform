@@ -7,7 +7,7 @@
 * Cria uma instância EC2
 
 ## Grafo
-[Grafo do recursos criados por este módulo](resources/graph.svg)
+[Grafo do recursos criados por este módulo](../ec2-graph.svg)
 
 ## Modo de uso - makefile
 ``` shell
@@ -79,13 +79,13 @@ terraform state list
 
 
 ## Inputs
-| Nome         | Descrição            | Tipo | Padrão  | Obrigatório |
+|     Nome     |      Descrição       | Tipo | Padrão  | Obrigatório |
 |--------------|----------------------|:----:|:-------:|:-----------:|
-| env          | Name of environment  |string|dev      |yes          |
-| service_name | Name of service      |string|nginx    |yes          |
+| env          | Nome do ambiente     |string|   dev   |     sim     |
+| service_name | Nome do serviço      |string|  nginx  |     sim     |
 
 ## Outputs
-| Nome        | Endereço                                   |
+|    Nome     |                  Endereço                  |
 |-------------|--------------------------------------------|
 | private_key | tls_private_key.private_key.private_key_pem|
 | public_ip   | aws_instance.ec2_instance.public_ip        |

@@ -24,6 +24,12 @@ Projeto com scripts do Terraform criados a partir do conteúdo assimilado durant
 - [x] modules
 
 
+## O que preciso fazer antes de rodar os scripts
+* Criar uma [conta na AWS](https://docs.aws.amazon.com/pt_br/polly/latest/dg/setting-up.html)
+* Criar um [usuário no IAM da AWS](https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_users_create.html#id_users_create_console) e baixe o csv com suas credenciais
+* Criar um domínio(No meu caso, usei um domínio gratuito do [Freenom](https://www.freenom.com/))
+
+
 ## Setup para rodar o Terraform localmente
 ``` shell
 ## Instalando dependências
@@ -87,8 +93,6 @@ terraform apply plan.out
 ```
 
 
-
-
 ## Exemplo de utilização
 ``` shell
 curl -fsSL https://get.docker.com | sh
@@ -117,10 +121,16 @@ make check-server
 make check-nginx
 ```
 
+
 ## Módulos
 * [aws-ec2](aws-ec2/README.md)
 * [aws-ecs](aws-ecs/README.md)
-* Caso queria criar apenas os recursos de um módulo, basta comentar o respectivo código dentro do arquivo [terrafile.tf](terrafile.tf) na raiz deste projeto.
+* Caso queria criar apenas os recursos de um módulo, basta comentar o [respectivo código](https://github.com/aleroxac/linuxtips-terraform/blob/master/terrafile.tf#L6-L19) dentro do arquivo [terrafile.tf](terrafile.tf) na raiz deste projeto.
+
+
+## O que os módulos acima não fazem
+* Não criam o [bucket no S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html) para guardar seu [state file](https://www.terraform.io/docs/language/settings/backends/s3.html); você mesmo precisa criar ["manualmente"](https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html#examples)
+* Não cadastram os [name servers do Route53](https://docs.aws.amazon.com/pt_br/Route53/latest/DeveloperGuide/GetInfoAboutHostedZone.html) automaticamente no seu provedor de domínio(Usei o [Freenom](https://my.freenom.com/knowledgebase.php?action=displayarticle&id=3))
 
 
 ## Referências

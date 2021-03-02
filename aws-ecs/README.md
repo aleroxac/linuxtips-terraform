@@ -10,7 +10,7 @@
 * Cria um Service no ECS
 
 ## Grafo
-[Grafo do recursos criados por este módulo](resources/graph.svg)
+[Grafo do recursos criados por este módulo](../ecs-graph.svg)
 
 ## Modo de uso - makefile
 ``` shell
@@ -87,10 +87,10 @@ terraform state list
 
 
 ## Inputs
-| Nome         | Descrição            | Tipo | Padrão  | Obrigatório |
-|--------------|----------------------|:----:|:-------:|:-----------:|
-| env          | Name of environment  |string|dev      |yes          |
-| service_name | Name of service      |string|nginx    |yes          |
+|     Nome     |    Descrição     | Tipo | Padrão  | Obrigatório |
+|--------------|------------------|:----:|:-------:|:-----------:|
+| env          | Nome do ambiente |string|   dev   |     yes     |
+| service_name | Nome do serviço  |string|  nginx  |     yes     |
 
 ## Outputs
 | Nome              | Endereço                                   |
